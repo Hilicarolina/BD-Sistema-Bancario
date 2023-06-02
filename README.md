@@ -47,7 +47,8 @@ un préstamo. Varios registros pueden estar vínculados a un mismo préstamo.
 
 <a name="item2"></a>
 ### D-E-R
-![D-E-R](https://github.com/hc-angulo/db-bank-system/assets/14808063/78dcdd89-db5a-457c-9651-8d2cf387aaab)
+![D-E-R](https://github.com/hc-angulo/db-bank-system/assets/14808063/f67aebfd-8b4f-459f-9f33-0c041a735674)
+
 
 <a name="item3"></a>
 ### Herramientas
