@@ -10,7 +10,7 @@ use sistema_bancario;
 -- I. --------------- Cliente ---------------
 create table cliente
 (
-id                 int                auto_increment,
+id                 int,
 DNI                int                not null,
 nombre             varchar(50)        not null,
 apellido           varchar(50)        not null,
@@ -19,16 +19,16 @@ sexo               enum('F','M'),
 telefono           int                not null,
 direccion          varchar(250),
 email              varchar(100),
-fecha_registro     timestamp,
+-- fecha_registro     timestamp,
 primary key (id)
 )engine = InnoDB;
 
 -- II. -------------- Sucursal -----------------
 create table sucursal (
-id                        int                 auto_increment,
+id                        int,
 direccion                 varchar(250)        not null,
-cantidad_de_clientes      int                 not null,
-fecha_registro            timestamp,
+cantidad_de_clientes      int,
+-- fecha_registro            timestamp,
 primary key (id)
 )engine = InnoDB;
 
@@ -36,7 +36,7 @@ primary key (id)
 -- III. --------------- Empleado ---------------
 create table empleado
 (
-id                 int                auto_increment,
+id                 int,
 id_sucursal        int                not null,
 DNI                int                not null,
 nombre             varchar(50)        not null,
@@ -46,17 +46,17 @@ sexo               enum('F','M'),
 telefono           int                not null,
 direccion          varchar(250),
 email              varchar(100),
-cargo              varchar(100)       not null,     
-fecha_registro     timestamp,
+cargo              varchar(100)       not null,   
+-- fecha_registro     timestamp,
 primary key (id)
 )engine = InnoDB;
 
 -- IV. --------------- Cuenta -------------------
 create table cuenta (
-id                         int                             auto_increment,
+id                         int,
 id_sucursal                int                             not null,
 tipo_de_cuenta             enum('Corriente','Ahorro')      not null,
-fecha_registro             timestamp,
+-- fecha_registro             timestamp,
 primary key (id),
  
 constraint fkCuentaSucursal
@@ -67,10 +67,10 @@ constraint fkCuentaSucursal
 
 -- V. --------------- CuentaCliente ---------------
 create table cuentaCliente (
-id                         int                             auto_increment,
+id                         int,
 id_cuenta                  int                             not null,
 id_cliente                 int                             not null,
-fecha_registro             timestamp,
+-- fecha_registro             timestamp,
 primary key (id),
 
  constraint fkcuentaClienteCuenta
@@ -85,9 +85,9 @@ constraint fkcuentaClienteCliente
 
 -- VI. ----------- Cheque ------------
 create table cheque (
-id                         int                             auto_increment,
+id                         int,
 id_cuenta                  int                             not null,
-fecha_registro             timestamp,
+-- fecha_registro             timestamp,
 primary key (id),
 
 constraint fkChequeCuenta
@@ -98,11 +98,11 @@ constraint fkChequeCuenta
 
 -- VII. ----------------- Prestamo ----------------
 create table prestamo (
-id                         int                             auto_increment,
+id                         int,
 id_cuenta                  int                             not null,
 numero_de_cuotas           enum('0','6','12','18','24')    not null,
 monto                      decimal(12,4)                   not null,
-fecha_registro             timestamp,
+-- fecha_registro             timestamp,
 primary key (id),
 
 constraint fkPrestamoCuenta
@@ -114,10 +114,10 @@ constraint fkPrestamoCuenta
 
 -- VIII. ----------------- Pago de Prestamo ----------------
 create table pagoPrestamo (
-id                         int                             auto_increment,
-id_prestamo                 int                            not null,
+id                         int,
+id_prestamo                int                            not null,
 monto                      decimal(12,4)                   not null,
-fecha_registro             timestamp,
+-- fecha_registro             timestamp,
 primary key (id),
 
 constraint fkpagoPrestamoPrestamo
@@ -129,14 +129,14 @@ constraint fkpagoPrestamoPrestamo
 
 -- IX. -------------- Transaccion -------------
 create table transaccion  (
-id                         int                             auto_increment,
+id                         int,
 id_cuenta                  int                             not null,
 id_sucursal                int,
 id_cheque                  int,
 id_empleado                int,
-tipo_de_transaccion        enum('Retiro','Depósito')       not null,
 monto                      decimal(12,4)                   not null,
-fecha_registro             timestamp,
+tipo_de_transaccion        enum('Retiro','Depósito')       not null,
+-- fecha_registro             timestamp,
 primary key (id),
 
 constraint fkTransaccionCuenta
